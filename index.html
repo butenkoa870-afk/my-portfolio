@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#F7F1E9">
-<title>Portfolio | Алёна Клюико</title>
+<title>Portfolio | Olena Kliuiko</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,7 +97,7 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 34px; border-to
   <nav class="language-switch" aria-label="Language"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button><button type="button" data-lang="uk" aria-pressed="false">UA</button></nav>
 </header>
 <section class="hero" aria-label="Introduction">
-  <h1><span>Алёна</span><span>Клюико</span></h1>
+  <h1><span>Olena</span><span>Kliuiko</span></h1>
   <p class="intro"><span class="accent" aria-hidden="true"></span><span data-i18n="1">Hier folgt eine kurze Vorstellung: Wer sie ist, was sie macht und welchen Mehrwert sie bietet.</span></p>
 </section>
 <main>
@@ -115,7 +115,7 @@ footer { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 34px; border-to
 <footer id="contact">
   <div><h2 class="mini footer-heading"><span data-i18n="12">Kontakt</span></h2><p class="footer-copy"><span data-i18n="13">Kontaktlinks folgen</span></p></div>
   <div><h2 class="mini footer-heading"><span data-i18n="14">Schwerpunkte</span></h2><p class="footer-copy"><span data-i18n="15">Hier stehen künftig die wichtigsten Kompetenzen und Tätigkeitsbereiche.</span></p></div>
-  <div class="footer-end"><p class="footer-copy">© 2026 Алёна Клюико</p><div class="mark" aria-hidden="true">✳</div></div>
+  <div class="footer-end"><p class="footer-copy">© 2026 Olena Kliuiko</p><div class="mark" aria-hidden="true">✳</div></div>
 </footer>
 </div>
 <script>
@@ -125,7 +125,7 @@ function setLanguage(lang) {
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = translations[lang][Number(el.dataset.i18n)]; });
   document.querySelectorAll('[data-lang]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
-  document.title = translations[lang][0].split(' / ')[0] + ' | Алёна Клюико';
+  document.title = translations[lang][0].split(' / ')[0] + ' | Olena Kliuiko';
   try { localStorage.setItem('portfolio-language', lang); } catch(e) {}
 }
 document.querySelectorAll('[data-lang]').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
