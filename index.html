@@ -37,13 +37,14 @@ a:focus-visible { outline: 2px solid var(--olive-deep); outline-offset: 4px; }
 .section-top { display: flex; justify-content: space-between; align-items: end; margin: 0 0 20px; gap: 24px; }
 .section-top h2 { margin: 0; }
 .counter { color: var(--olive); }
-.project-list { border-top: 2px solid var(--olive); }
+.project-list { position:relative; border-top: 2px solid var(--olive); }
+.project-list::before { content:""; position:absolute; left:0; right:0; top:0; height:var(--hover-height,0px); background:#A0BEDA; transform:translateY(var(--hover-y,0px)); opacity:0; pointer-events:none; transition:transform .42s cubic-bezier(.22,.8,.2,1),height .42s cubic-bezier(.22,.8,.2,1),opacity .25s ease; }
+.project-list.is-hovered::before { opacity:1; }
 .project-row { position:relative; isolation:isolate; overflow:hidden; display: grid; grid-template-columns: minmax(42px,.6fr) minmax(0,5fr) minmax(0,3.7fr) minmax(110px,1.6fr); gap: clamp(12px,2vw,28px); align-items: center; min-height: clamp(105px, 11vw, 150px); padding: 24px clamp(10px, 1.4vw, 22px); border-bottom: 1px solid var(--line); transition: color .35s ease, opacity .7s cubic-bezier(.22,.8,.2,1), transform .7s cubic-bezier(.22,.8,.2,1); }
 .project-row:hover, .project-row:focus-visible { color: #34211B; border-bottom-color: #34211B; }
-.project-row::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:#A0BEDA; opacity:0; transition:opacity .42s ease; }
-.project-row:hover::before,.project-row:focus-visible::before { opacity:1; }
+
 .project-row > * { position:relative; z-index:1; }
-.project-row:hover .project-name,.project-row:focus-visible .project-name { transform:none; }
+
 .project-num { font-size: clamp(16px,1.5vw,21px); font-weight: 800; font-style: italic; color: var(--olive-deep); }
 .project-name { font-size: clamp(24px, 3.2vw, 48px); font-weight: 800; text-transform: uppercase; letter-spacing: -.06em; line-height: 1.05; transition:transform .55s cubic-bezier(.22,.8,.2,1); }
 .project-desc { font-size: clamp(11px,.95vw,14px); font-weight: 700; text-transform: uppercase; line-height: 1.55; color: var(--olive-deep); }
@@ -139,6 +140,12 @@ const ready=()=>document.documentElement.classList.add('ready');
 if(document.readyState==='complete')requestAnimationFrame(ready);else window.addEventListener('load',()=>requestAnimationFrame(ready),{once:true});
 setTimeout(ready,1200);
 const rows=[...document.querySelectorAll('.project-row')];
+const list=document.querySelector('.project-list');
+let hoverFrame;
+function moveHighlight(row){const listRect=list.getBoundingClientRect(),rect=row.getBoundingClientRect();list.style.setProperty('--hover-y',(rect.top-listRect.top)+'px');list.style.setProperty('--hover-height',rect.height+'px');list.classList.add('is-hovered');}
+rows.forEach(row=>{row.addEventListener('mouseenter',()=>moveHighlight(row));row.addEventListener('focus',()=>moveHighlight(row));});
+list.addEventListener('mouseleave',()=>list.classList.remove('is-hovered'));
+list.addEventListener('focusout',e=>{if(!list.contains(e.relatedTarget))list.classList.remove('is-hovered')});
 if('IntersectionObserver' in window){let n=0;const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;entry.target.style.transitionDelay=((n++%5)*65)+'ms';entry.target.classList.add('in');observer.unobserve(entry.target);});},{threshold:.1});rows.forEach(row=>observer.observe(row));}else rows.forEach(row=>row.classList.add('in'));
 setTimeout(()=>rows.forEach(row=>row.classList.add('in')),3500);
 })();
