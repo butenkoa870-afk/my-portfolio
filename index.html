@@ -40,10 +40,10 @@ a:focus-visible { outline: 2px solid var(--olive-deep); outline-offset: 4px; }
 .project-list { border-top: 2px solid var(--olive); }
 .project-row { position:relative; isolation:isolate; overflow:hidden; display: grid; grid-template-columns: minmax(42px,.6fr) minmax(0,5fr) minmax(0,3.7fr) minmax(110px,1.6fr); gap: clamp(12px,2vw,28px); align-items: center; min-height: clamp(105px, 11vw, 150px); padding: 24px clamp(10px, 1.4vw, 22px); border-bottom: 1px solid var(--line); transition: color .35s ease, opacity .7s cubic-bezier(.22,.8,.2,1), transform .7s cubic-bezier(.22,.8,.2,1); }
 .project-row:hover, .project-row:focus-visible { color: #34211B; border-bottom-color: #34211B; }
-.project-row::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:#A0BEDA; transform:translateX(-101%); transition:transform .65s cubic-bezier(.22,.8,.2,1); }
-.project-row:hover::before,.project-row:focus-visible::before { transform:translateX(0); }
+.project-row::before { content:""; position:absolute; top:0; bottom:0; left:0; width:100%; z-index:0; pointer-events:none; background:#A0BEDA; transform:translate3d(-101%,0,0); transition:transform .65s cubic-bezier(.22,.8,.2,1); will-change:transform; }
+.project-row:hover::before,.project-row:focus-visible::before { transform:translate3d(0,0,0); }
 .project-row > * { position:relative; z-index:1; }
-.project-row:hover .project-name,.project-row:focus-visible .project-name { transform:translateX(14px); }
+.project-row:hover .project-name,.project-row:focus-visible .project-name { transform:translate3d(14px,0,0); }
 .project-num { font-size: clamp(16px,1.5vw,21px); font-weight: 800; font-style: italic; color: var(--olive-deep); }
 .project-name { font-size: clamp(24px, 3.2vw, 48px); font-weight: 800; text-transform: uppercase; letter-spacing: -.06em; line-height: 1.05; transition:transform .55s cubic-bezier(.22,.8,.2,1); }
 .project-desc { font-size: clamp(11px,.95vw,14px); font-weight: 700; text-transform: uppercase; line-height: 1.55; color: var(--olive-deep); }
