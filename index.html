@@ -17,6 +17,28 @@ footer{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:3px 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-row{transition:none}}
 .project-row:hover,.project-row:focus-visible{transform:translateX(4px)}.hero h1 span{animation:riseIn .85s both}.hero h1 span:nth-child(2){animation-delay:.12s}@keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.hero h1 span{animation:none}.project-row:hover,.project-row:focus-visible{transform:none}}
 .hero{max-width:1150px}.hero h1{font-size:clamp(2.5rem,6vw,6.2rem);letter-spacing:-.06em;line-height:1.05}.hero h1 span{max-width:100%}.project-row:hover,.project-row:focus-visible{background:#342A20;color:#F1EBDD}.tag{border-radius:999px}.project-row{border-radius:2px}@media(max-width:540px){.hero h1{font-size:clamp(2rem,8.5vw,3.6rem)}}
+
+/* Portfolio layout refinement */
+body{background:#F1EBDD;color:#171510}
+.topline{padding-bottom:22px;border-bottom:1px solid rgba(52,42,32,.28)}
+.hero{max-width:none;min-height:0;padding:72px 0 90px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);align-items:end;gap:48px}
+.hero h1{font-family:Unbounded,Onest,sans-serif;font-size:clamp(35px,4.1vw,70px);line-height:1.14;letter-spacing:-.055em;margin:0;max-width:100%;font-weight:700}
+.hero h1 span{display:block}
+.hero .intro{max-width:360px;padding:24px 0 20px 25px;border-left:3px solid #8C9560;font-size:clamp(15px,1.25vw,19px);font-weight:500;line-height:1.65;color:#342A20}
+.projects{padding-bottom:110px}.section-heading{padding:18px 0;margin-bottom:0}
+.project-list{border-top:1px solid #8C9560}
+.project-row{min-height:104px;border-bottom:1px solid rgba(52,42,32,.25);padding:18px 16px;transition:background-color .3s,color .3s,padding-left .3s}
+.project-row:nth-child(even){background:#C5C9A6}
+.project-row:nth-child(odd){background:#F1EBDD}
+.project-row:hover,.project-row:focus-visible{background:#342A20;color:#F1EBDD}
+.project-name{font-size:clamp(17px,2vw,30px);letter-spacing:-.035em}
+.project-num{color:#5D5231}.project-desc{color:#5D5231}
+.project-row:hover .project-num,.project-row:hover .project-desc,.project-row:hover .tag{color:#F1EBDD}
+.tag{border:1px solid #8C9560;color:#342A20;border-radius:100px}
+footer{background:#342A20;color:#F1EBDD;border-top:0;padding:42px clamp(22px,3vw,48px) 65px;margin-bottom:40px}
+.footer-label,.footer-copy,.footer-mark{color:#C5C9A6}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:28px;padding:60px 0 75px}.hero .intro{max-width:560px}.hero h1{font-size:clamp(32px,6vw,58px)}}
+@media(max-width:540px){.hero{padding:48px 0 64px}.hero h1{font-size:clamp(27px,7.5vw,40px)}.hero .intro{padding:12px 0 12px 18px;font-size:15px}.project-row{min-height:90px}}
 </style>
 </head>
 <body>
